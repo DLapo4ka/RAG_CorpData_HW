@@ -27,6 +27,28 @@ def test_ask_sources_contain_doc_id():
         assert source["score"] >= MIN_SCORE
 
 
+def test_sources_include_title_and_full_text():
+    result = ask("chicken breast")
+    assert result["sources"]
+    for source in result["sources"]:
+        assert source["title"]
+        assert source["text"]
+        assert source["title"] in result["answer"]
+
+
+def test_sources_include_nutrition():
+    result = ask("vegetarian soup")
+    assert result["sources"]
+    for source in result["sources"]:
+        assert "nutrition" in source
+        assert "nutrition_text" in source
+        assert "Калории:" in source["nutrition_text"]
+        assert "Белки:" in source["nutrition_text"]
+        assert "Жиры:" in source["nutrition_text"]
+        assert source["nutrition_text"] in result["answer"]
+    assert any(source["nutrition"]["calories"] is not None for source in result["sources"])
+
+
 def test_off_topic_refusal():
     result = ask("how to fix a car")
     assert result["sources"] == []

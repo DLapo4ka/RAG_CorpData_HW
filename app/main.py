@@ -29,12 +29,20 @@ if not index_ready():
     st.error(INDEX_MISSING_MESSAGE)
     st.stop()
 
+if "query" not in st.session_state:
+    st.session_state.query = ""
+
 with st.sidebar:
     st.header("Demo-вопросы")
-    for question in DEMO_QUESTIONS:
-        st.code(question)
+    for index, question in enumerate(DEMO_QUESTIONS):
+        if st.button(question, key=f"demo_{index}", use_container_width=True):
+            st.session_state.query = question
 
-query = st.text_input("Ваш вопрос", placeholder="chicken recipe under 400 calories")
+query = st.text_input(
+    "Ваш вопрос",
+    key="query",
+    placeholder="chicken recipe under 400 calories",
+)
 search = st.button("Найти рецепты", type="primary")
 
 if search and query.strip():
@@ -53,5 +61,9 @@ if search and query.strip():
     if result["sources"]:
         st.subheader("Источники")
         for source in result["sources"]:
-            st.markdown(f"**{source['doc_id']}** (score: {source['score']:.3f})")
+            st.markdown(
+                f"**{source['title']}** — `{source['doc_id']}` "
+                f"(score: {source['score']:.3f})"
+            )
+            st.caption(source["nutrition_text"])
             st.text(source["text"])

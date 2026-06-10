@@ -27,6 +27,8 @@ def prepare_recipe(recipe: dict) -> dict:
         "ingredients": recipe["ingredients"],
         "directions": recipe["directions"],
         "calories": recipe["calories"],
+        "fat": recipe.get("fat"),
+        "protein": recipe.get("protein"),
         "text": build_text(
             recipe["title"],
             recipe.get("ingredients", []),
