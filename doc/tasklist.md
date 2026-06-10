@@ -11,15 +11,15 @@
 | 2 | Ingestion | ✅ | documents.jsonl создан |
 | 3 | Chunking | ✅ | chunks.jsonl, тест chunking |
 | 4 | Индекс TF-IDF | ✅ | файлы в data/index/ |
-| 5 | Retrieval | ⬜ | top_k=3 + score в консоли |
+| 5 | Retrieval | ✅ | top_k=3 + score в консоли |
 | 6 | Demo-ответ | ⬜ | ответ + источники без UI |
 | 7 | Streamlit UI | ⬜ | demo-вопросы в браузере |
 | 8 | Тесты и README | ⬜ | pytest green, README воспроизводим |
 
 Легенда: ⬜ не начато · 🔄 в работе · ✅ готово · ❌ блокер
 
-Текущая итерация: 5
-Готовность MVP: 5 / 9
+Текущая итерация: 6
+Готовность MVP: 6 / 9
 
 ## Итерация 0 — Каркас проекта
 
