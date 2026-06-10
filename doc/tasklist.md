@@ -9,7 +9,7 @@
 | 0 | Каркас проекта | ✅ | uv sync без ошибок |
 | 1 | Подготовка данных Epicurious | ✅ | datasets.json с 5000 рецептов |
 | 2 | Ingestion | ✅ | documents.jsonl создан |
-| 3 | Chunking | ⬜ | chunks.jsonl, тест chunking |
+| 3 | Chunking | ✅ | chunks.jsonl, тест chunking |
 | 4 | Индекс TF-IDF | ⬜ | файлы в data/index/ |
 | 5 | Retrieval | ⬜ | top_k=3 + score в консоли |
 | 6 | Demo-ответ | ⬜ | ответ + источники без UI |
@@ -18,8 +18,8 @@
 
 Легенда: ⬜ не начато · 🔄 в работе · ✅ готово · ❌ блокер
 
-Текущая итерация: 3
-Готовность MVP: 3 / 9
+Текущая итерация: 4
+Готовность MVP: 4 / 9
 
 ## Итерация 0 — Каркас проекта
 
@@ -63,7 +63,7 @@ uv run python scripts/ingest.py
 
 ## Итерация 3 — Chunking
 
-- `app/chunker.py` — нарезка по абзацам, max 400 символов, overlap 50
+- `app/chunker.py` — нарезка по абзацам, max 600 символов, overlap 80
 - Выход: `data/processed/chunks.jsonl`
 
 **Проверка:**
